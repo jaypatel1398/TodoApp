@@ -1,0 +1,67 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+html {
+  text-align: center;
+}
+button {
+  margin: 10px 20px;
+  border-radius: 10px;
+  font-size: 2vh;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.frminput {
+  padding: 13px;
+  width: 50%;
+  height: 40%;
+  border-radius: 10px;
+  font-size: 2vh;
+  border: 1px solid rgba(0,0,0,0.6);
+  outline: none;
+  margin: 10px;
+}
+.title {
+  font-size: 10vh;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 5vh 0 5vh 0;
+}
+.displayList {
+  font-size: 2vh;
+}
+.todoItems {
+  transform: scale(1.5);
+  padding: 10px 10px;
+  margin: 20px 20px;
+  font-family: sans-serif;
+}
+a {
+  margin: 20px;
+  cursor: pointer;
+  font-size: 2vh;
+}
+.selected {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+.hide {
+  display: none;
+}
+.showError {
+  color: red;
+  font-size: 2vh;
+}
+.errorfrmInput {
+  padding: 13px;
+  width: 50%;
+  height: 40%;
+  border-radius: 10px;
+  font-size: 2vh;
+  border: 1px solid rgba(255,0,0,0.9);
+  outline: none;
+  margin: 10px;
+}
