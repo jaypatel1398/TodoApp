@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-const Inputform = (props) => {
+import { connect } from 'react-redux';
+const Inputform = ({addTodo}) => {
   const [currentInput, setCurrentInput] = useState('');
   const [error, setError] = useState(false);
   return (
@@ -21,12 +22,7 @@ const Inputform = (props) => {
               return false;
             }
             if (e.which === 13) {
-              props.addTodo({
-                type: 'ADDTODO',
-                payload: {
-                  task: e.target.value
-                }
-              });
+              addTodo(e.target.value);
               setCurrentInput('');
             }
           }}
@@ -36,4 +32,12 @@ const Inputform = (props) => {
     </div>
   );
 }
-export default Inputform;
+const mapDispatchToProps = (dispatch) => ({
+  addTodo: task => dispatch({
+    type: 'ADDTODO',
+    payload: {
+      task: task
+    }
+  })
+})
+export default connect(null, mapDispatchToProps)(Inputform);

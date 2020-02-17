@@ -1,21 +1,30 @@
 import React from 'react';
 import _ from 'lodash';
-const DisplayFilters = (props) => {
-  //todo: from props
-  //todo: use one onChange
-  //todo: defaultState, focus style on select underline and bold
-  //make it a list of buttons
+import { connect } from 'react-redux';
+import displayFilterTypes from '../constants/displayFilterTypes';
+const DisplayFilters = ({displayFilter, setDisplayFilter}) => {
   return (
     <div className="statusButtons">
-      {_.map(props.displayFilterTypes, (filterType, index) => (
+      {_.map(displayFilterTypes, (filterType, index) => (
         <button
-          className={props.displayFilter === filterType ? "selected" : ""}
+          className={displayFilter === filterType ? "selected" : ""}
           key={index}
-          onClick={() => props.setDisplayFilter(filterType)} >
+          onClick={() => setDisplayFilter(filterType)} >
           {filterType}
         </button>
       ))}
     </div>
   );
 }
-export default DisplayFilters;
+const mapStateToProps = (state) => ({
+  displayFilter: state.displayFilter
+});
+const mapDispatchToProps = (dispatch) => ({
+  setDisplayFilter: filter => dispatch({
+    type: 'SET_DISPLAY_FILTER',
+    payload: {
+      displayFilter: filter
+    }
+  })
+});
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayFilters);

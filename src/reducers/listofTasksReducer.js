@@ -1,5 +1,5 @@
 import _ from 'lodash';
-const listofTasksReducer = (listofTasks, action) => {
+const listofTasksReducer = (listofTasks = [], action) => {
 	switch (action.type) {
 		case ('ADDTODO'):
 			return ([
