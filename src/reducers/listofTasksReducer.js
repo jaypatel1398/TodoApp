@@ -1,7 +1,7 @@
 import _ from 'lodash';
 const listofTasksReducer = (listofTasks = [], action) => {
 	switch (action.type) {
-		case ('ADDTODO'):
+		case ('ADD_TODO'):
 			return ([
 				...listofTasks,
 				{
@@ -10,7 +10,7 @@ const listofTasksReducer = (listofTasks = [], action) => {
 					done: false
 				}
 			])
-		case ('TOGGLETODO'):
+		case ('TOGGLE_TODO'):
 			return (_.map(listofTasks,
 				(todo) => {
 					if (todo.id === action.payload.id) {

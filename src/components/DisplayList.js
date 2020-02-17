@@ -2,6 +2,7 @@ import React from 'react';
 import filterList from './helper';
 import _ from 'lodash';
 import { connect } from 'react-redux';
+import {toggletodo, toggleTodo} from '../actions/actionCreators';
 const DisplayList = ({ listofTasks, displayFilter, toggletodo }) => {
   let myList = listofTasks;
   myList = filterList(displayFilter, listofTasks);
@@ -26,11 +27,6 @@ const mapStateToProps = (state) => ({
   displayFilter: state.displayFilter
 });
 const mapDispatchToProps = (dispatch) => ({
-  toggletodo: id => dispatch({
-    type: 'TOGGLETODO',
-    payload: {
-      id: id
-    }
-  })
+  toggletodo: id => dispatch(toggleTodo(id))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(DisplayList);

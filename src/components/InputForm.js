@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import {addTodo} from '../actions/actionCreators';
 const Inputform = ({addTodo}) => {
   const [currentInput, setCurrentInput] = useState('');
   const [error, setError] = useState(false);
@@ -33,11 +34,6 @@ const Inputform = ({addTodo}) => {
   );
 }
 const mapDispatchToProps = (dispatch) => ({
-  addTodo: task => dispatch({
-    type: 'ADDTODO',
-    payload: {
-      task: task
-    }
-  })
+  addTodo: task => dispatch(addTodo(task))
 })
 export default connect(null, mapDispatchToProps)(Inputform);

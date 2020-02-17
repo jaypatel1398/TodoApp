@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import displayFilterTypes from '../constants/displayFilterTypes';
+import {setDisplayFilter} from '../actions/actionCreators';
 const DisplayFilters = ({displayFilter, setDisplayFilter}) => {
   return (
     <div className="statusButtons">
@@ -20,11 +21,6 @@ const mapStateToProps = (state) => ({
   displayFilter: state.displayFilter
 });
 const mapDispatchToProps = (dispatch) => ({
-  setDisplayFilter: filter => dispatch({
-    type: 'SET_DISPLAY_FILTER',
-    payload: {
-      displayFilter: filter
-    }
-  })
+  setDisplayFilter: filter => dispatch(setDisplayFilter(filter))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(DisplayFilters);

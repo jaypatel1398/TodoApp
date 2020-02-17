@@ -39,11 +39,6 @@ button {
   margin: 20px 20px;
   font-family: sans-serif;
 }
-a {
-  margin: 20px;
-  cursor: pointer;
-  font-size: 2vh;
-}
 .selected {
   text-decoration: underline;
   font-weight: bolder;
