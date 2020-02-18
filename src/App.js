@@ -1,8 +1,9 @@
-import "./index.css";
 import React from "react";
-import DisplayFilters from './components/DisplayFilters';
-import DisplayList from './components/DisplayList';
-import InputForm from './components/InputForm';
+import DisplayFilters from './components/DisplayFilters/DisplayFilters';
+import DisplayList from './components/DisplayList/DisplayList';
+import InputForm from './components/InputForm/InputForm';
+import "./App.css";
+
 const App = () => {
   return (
     <div className="Todo">
@@ -19,4 +20,5 @@ const App = () => {
     </div>
   );
 }
+
 export default App;

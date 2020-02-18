@@ -3,6 +3,6 @@ import listofTasksReducer from './listofTasksReducer';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
-    displayFilter: displayFilterReducer,
+    currentFilter: displayFilterReducer,
     listofTasks: listofTasksReducer
 });

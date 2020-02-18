@@ -5,6 +5,10 @@
 html {
   text-align: center;
 }
+button:hover {
+  text-decoration: underline;
+  text-underline-position: under;
+}
 button {
   margin: 10px 20px;
   border-radius: 10px;
@@ -32,6 +36,7 @@ button {
 }
 .displayList {
   font-size: 2vh;
+  font-family: sans-serif;
 }
 .todoItems {
   transform: scale(1.5);
@@ -41,7 +46,9 @@ button {
 }
 .selected {
   text-decoration: underline;
+  text-underline-position: under;
   font-weight: bolder;
+  color: blue;
 }
 .hide {
   display: none;
@@ -59,4 +66,12 @@ button {
   border: 1px solid rgba(255,0,0,0.9);
   outline: none;
   margin: 10px;
+}
+.hideButton {
+  display: none;
+}
+.showButton {
+  display: inline;
+  font-family: sans-serif;
+  font-size: 2vh;
 }

@@ -4,15 +4,21 @@ export const addTodo = (task) => ({
     task: task
   }
 });
+
 export const toggleTodo = (id) => ({
   type: 'TOGGLE_TODO',
   payload: {
     id: id
   }
 });
-export const setDisplayFilter = (filter) => ({
+
+export const setCurrentFilter = (filter) => ({
   type: 'SET_DISPLAY_FILTER',
   payload: {
-    displayFilter: filter
+    currentFilter: filter
   }
+});
+
+export const clearCompleted = (id) => ({
+  type: 'CLEAR_COMPLETED'
 });

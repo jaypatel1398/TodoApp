@@ -1,9 +1,10 @@
-const displayFilterReducer = (displayFilter = 'ALL', action) => {
+const displayFilterReducer = (currentFilter = 'ALL', action) => {
     switch(action.type){
       case 'SET_DISPLAY_FILTER':
-        return(action.payload.displayFilter);
+        return(action.payload.currentFilter);
       default:
-        return displayFilter;
+        return currentFilter;
     }
 }
+
 export default displayFilterReducer;

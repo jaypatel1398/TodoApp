@@ -1,4 +1,5 @@
 import _ from 'lodash';
+
 const filterList = (filterValue, todoList) => {
   if (filterValue !== 'ALL') {
     const filterSelector = (filterValue === 'COMPLETED');
@@ -9,4 +10,5 @@ const filterList = (filterValue, todoList) => {
   }
   return todoList;
 }
+
 export default filterList;

@@ -1,5 +1,7 @@
 import _ from 'lodash';
+
 const listofTasksReducer = (listofTasks = [], action) => {
+
 	switch (action.type) {
 		case ('ADD_TODO'):
 			return ([
@@ -22,8 +24,15 @@ const listofTasksReducer = (listofTasks = [], action) => {
 					}
 					return todo;
 				}))
+		case ('CLEAR_COMPLETED'):
+			return (_.filter(listofTasks,
+				(todo) => {
+					return(todo.done ? false : true);
+				})
+			)
 		default:
 			return listofTasks;
 	}
 }
+
 export default listofTasksReducer;
