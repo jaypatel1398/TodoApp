@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
-import {addTodo} from '../../actions/actionCreators';
+import {addTodo, setTodoAddedMessage} from '../../actions/actionCreators';
 import "./inputForm.css";
 
-const Inputform = ({addTodo}) => {
+let timeoutId;
+const Inputform = ({addTodo, setTodoAddedMessage}) => {
   const [currentInput, setCurrentInput] = useState('');
   const [error, setError] = useState(false);
   const onsubmitCallback = useCallback(
@@ -15,6 +16,8 @@ const Inputform = ({addTodo}) => {
     e => {
       setCurrentInput(e.target.value);
       setError(false);
+      setTodoAddedMessage(false,'');
+      timeoutId && clearTimeout(timeoutId);
     },
     []
   );
@@ -28,6 +31,8 @@ const Inputform = ({addTodo}) => {
       }
       if (e.which === 13) {
         addTodo(e.target.value);
+        setTodoAddedMessage(true, e.target.value);
+        timeoutId = setTimeout(() => setTodoAddedMessage(false,''), 2000);
         setCurrentInput('');
       }
     },
@@ -53,7 +58,8 @@ const Inputform = ({addTodo}) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addTodo: task => dispatch(addTodo(task))
+  addTodo: task => dispatch(addTodo(task)),
+  setTodoAddedMessage: (todoAdded, task) => dispatch(setTodoAddedMessage({todoAdded: todoAdded, task: task}))
 })
 
 export default connect(null, mapDispatchToProps)(Inputform);

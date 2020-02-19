@@ -23,3 +23,11 @@ export const setCurrentFilter = filter => ({
 export const clearCompleted = () => ({
   type: actionTypes.CLEAR_COMPLETED
 });
+
+export const setTodoAddedMessage = ({todoAdded, task}) => ({
+  type: actionTypes.SET_TODO_ADDED_MESSAGE,
+  payload: {
+    todoAdded,
+    task
+  }
+});

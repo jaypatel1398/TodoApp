@@ -1,0 +1,20 @@
+.todoAddedMessage {
+    background-color: rgba(62, 194, 255, 0.397);
+    padding: 5px;
+    border: 1px solid rgb(15, 57, 77);
+    color: rgb(15, 57, 77);
+    position: absolute;
+    top: 10px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+.hide {
+    display: none;
+}
+.task {
+    font-weight: bolder;
+    font-style: italic;
+    color: blue;
+}

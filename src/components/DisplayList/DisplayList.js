@@ -39,7 +39,6 @@ const DisplayList = ({ listofTasks, currentFilter, toggleTodo, clearCompleted })
       </div>
     </div>
   );
-
 }
 
 const mapStateToProps = (state) => ({
