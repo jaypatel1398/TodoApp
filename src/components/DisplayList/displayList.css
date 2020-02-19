@@ -16,12 +16,17 @@
     text-underline-position: under;
 }
 .displayList {
-    border: 1px solid rgb(15, 57, 77);
-    border-radius: 5px;
-    text-align: left;
-    padding: 10px 10px;
+    border-bottom: 1px solid rgb(15, 57, 77);
+    border-left: 1px solid rgb(15, 57, 77);
+    border-right: 1px solid rgb(15, 57, 77);
+    padding: 13px;
     margin: auto;
+    width: 500px;
+    height: 20px;
     background-color: white;
+}
+.displayList:first-child {
+    border-top: 1px solid rgb(15, 57, 77);
 }
 .hide {
     display: none;
@@ -29,6 +34,9 @@
 .scrollArea {
     max-height: 500px;
     overflow: auto;
+}
+.todoItems {
+    margin: 0 15px;
 }
 .footer {
     display: flex;

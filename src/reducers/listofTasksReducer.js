@@ -1,33 +1,34 @@
 import _ from 'lodash';
+import {actionTypes} from '../constants/actionTypes';
 
 const listofTasksReducer = (listofTasks = [], action) => {
 
 	switch (action.type) {
-		case ('ADD_TODO'):
+		case (actionTypes.ADD_TODO):
 			return ([
 				...listofTasks,
 				{
 					task: action.payload.task,
 					id: listofTasks.length + 1,
-					done: false
+					completed: false
 				}
 			])
-		case ('TOGGLE_TODO'):
+		case (actionTypes.TOGGLE_TODO):
 			return (_.map(listofTasks,
 				(todo) => {
 					if (todo.id === action.payload.id) {
 						return ({
 							task: todo.task,
 							id: todo.id,
-							done: !todo.done
+							completed: !todo.completed
 						});
 					}
 					return todo;
 				}))
-		case ('CLEAR_COMPLETED'):
+		case (actionTypes.CLEAR_COMPLETED):
 			return (_.filter(listofTasks,
 				(todo) => {
-					return(todo.done ? false : true);
+					return !todo.completed;
 				})
 			)
 		default:

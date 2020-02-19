@@ -6,7 +6,6 @@ import "./inputForm.css";
 const Inputform = ({addTodo}) => {
   const [currentInput, setCurrentInput] = useState('');
   const [error, setError] = useState(false);
-
   const onsubmitCallback = useCallback(
     e => e.preventDefault(),
     []
@@ -24,6 +23,7 @@ const Inputform = ({addTodo}) => {
     e => {
       if (e.target.value.trim() === '') {
         setError(true);
+        setTimeout( () => { setError(false) }, 2000);
         return false;
       }
       if (e.which === 13) {
@@ -47,7 +47,7 @@ const Inputform = ({addTodo}) => {
           onKeyPress={onKeyPressCallback}
         />
       </form>
-      <span className={error ? "showError" : "hide"}>Error: Please enter a valid task</span>
+      <div className={error ? "showError" : "hide"}>Error: Please enter a valid task</div>
     </div>
   );
 }

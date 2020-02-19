@@ -1,6 +1,8 @@
-const displayFilterReducer = (currentFilter = 'ALL', action) => {
+import displayFilterTypes from '../constants/displayFilterTypes';
+import {actionTypes} from '../constants/actionTypes';
+const displayFilterReducer = (currentFilter = displayFilterTypes.ALL, action) => {
     switch(action.type){
-      case 'SET_DISPLAY_FILTER':
+      case actionTypes.SET_DISPLAY_FILTER:
         return(action.payload.currentFilter);
       default:
         return currentFilter;

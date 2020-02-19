@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import filterList from '../../helpers/filterList';
+import React from 'react';
+import filterTodos from '../../helpers/filterTodos';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import {toggleTodo, clearCompleted} from '../../actions/actionCreators';
@@ -7,23 +7,19 @@ import "./displayList.css";
 
 const DisplayList = ({ listofTasks, currentFilter, toggleTodo, clearCompleted }) => {
   let myList = listofTasks;
-  myList = filterList(currentFilter, listofTasks);
-  useEffect(()=>{
-      var objDiv = document.getElementById("scrollArea");
-      objDiv.scrollTop = objDiv.scrollHeight;
-  });
+  myList = filterTodos(currentFilter.key, listofTasks);
   return(
     <div>
       <div className="scrollArea" id="scrollArea">
         {
           _.map(myList,
-            (item, index) => (
-              <div className="displayList" key={item.id} onClick={toggleTodo.bind(this,item.id)}>
+            (item) => (
+              <div className="displayList" key={item.id} onClick={_.partial(toggleTodo,item.id)}>
                 <input
                   type="checkbox"
                   id="myCheck"
                   className="todoItems"
-                  checked={item.done}
+                  checked={item.completed}
                 />
                 {item.task}
               </div>
@@ -33,10 +29,10 @@ const DisplayList = ({ listofTasks, currentFilter, toggleTodo, clearCompleted })
       </div>
       <div className="footer">
         <span className="countDisplay">
-          {currentFilter.toLowerCase()} tasks: {myList.length}
+          {currentFilter.label} tasks: {myList.length}
         </span>
         <button 
-          className={ ((myList.length === 0) || (currentFilter==='ACTIVE')) ? "hide" : "clearCompletedButton" } 
+          className={ ((myList.length === 0) || (currentFilter.key==='ACTIVE')) ? "hide" : "clearCompletedButton" } 
           onClick={clearCompleted}>
           Clear Completed
         </button>
