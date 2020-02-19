@@ -1,6 +1,10 @@
+* {
+    font-size: 20px;
+    font-family: sans-serif;
+    color: rgb(15, 57, 77);
+}
 .clearCompletedButton:hover {
-    text-decoration: underline;
-    text-underline-position: under;
+    color: rgb(20, 180, 255);
 }
 .clearCompletedButton {
     margin: 10px 20px;    
@@ -8,14 +12,29 @@
     cursor: pointer;
     outline: none;
     border: none;
-    font-size: 20px;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+.displayList {
+    border: 1px solid rgb(15, 57, 77);
+    border-radius: 5px;
+    text-align: left;
+    padding: 10px 10px;
+    margin: auto;
+    background-color: white;
 }
 .hide {
     display: none;
 }
-.todoItems {
-    transform: scale(1.3);
-    padding: 10px 10px;
-    margin: 20px 20px;
-    font-family: sans-serif;
+.scrollArea {
+    max-height: 500px;
+    overflow: auto;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.countDisplay {
+    margin: 10px 20px;
 }

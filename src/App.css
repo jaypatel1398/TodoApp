@@ -1,7 +1,13 @@
 body {
-  text-align: center;
+  /* text-align: center; */
+  background-color: rgba(204, 238, 255, 0.151);
+  display: flex;
+  justify-content: center;
 }
 .title {
   font-family: sans-serif;
   font-size: 90px;
+  color: rgb(15, 57, 77);
+  margin: 60px 0 0;
+  text-align: center;
 }

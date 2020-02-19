@@ -8,14 +8,16 @@ import {setCurrentFilter} from '../../actions/actionCreators';
 const DisplayFilters = ({currentFilter, setCurrentFilter}) => {
 
   return (
-      _.map(displayFilterTypes, (filterType, index) => (
+    <div className="filters">
+      {_.map(displayFilterTypes, (filterType, index) => (
         <button
-          className={currentFilter === filterType ? "selected filterButton" : "filterButton"}
+          className={currentFilter === filterType ? "filterButton selected" : "filterButton"}
           key={index}
           onClick={setCurrentFilter.bind(this, filterType)} >
-          {filterType}
+          {filterType.toLowerCase()}
         </button>
-      ))
+      ))}
+    </div>
   );
 }
 

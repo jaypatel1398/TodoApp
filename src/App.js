@@ -6,17 +6,17 @@ import "./App.css";
 
 const App = () => {
   return (
-    <div className="Todo">
+    <div className="todo">
       <h1 className="title">Todos</h1>
-      <div className="inputform">
+      {/* <div className="inputform"> */}
         <InputForm/>
-      </div>
-      <div className="statusButtons">
+      {/* </div> */}
+      {/* <div className="statusButtons"> */}
         <DisplayFilters/>
-      </div>
-      <div className="listofTasks">
+      {/* </div> */}
+      {/* <div className="listofTasks"> */}
         <DisplayList/>
-      </div>
+      {/* </div> */}
     </div>
   );
 }

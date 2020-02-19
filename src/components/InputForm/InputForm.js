@@ -11,6 +11,7 @@ const Inputform = ({addTodo}) => {
     e => e.preventDefault(),
     []
   );
+
   const onInputChangeCallback = useCallback(
     e => {
       setCurrentInput(e.target.value);
@@ -18,9 +19,10 @@ const Inputform = ({addTodo}) => {
     },
     []
   );
+
   const onKeyPressCallback = useCallback(
     e => {
-      if (e.target.value === '') {
+      if (e.target.value.trim() === '') {
         setError(true);
         return false;
       }
@@ -36,7 +38,7 @@ const Inputform = ({addTodo}) => {
     <div className="inputForm">
       <form onSubmit={onsubmitCallback}>
         <input
-          className={error ? "errorfrmInput" : "frminput"}
+          className={error ? "frminput redBorder" : "frminput"}
           type="text"
           value={currentInput}
           placeholder="Enter a task to be done"
