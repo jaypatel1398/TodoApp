@@ -1,5 +1,5 @@
 import React from 'react';
-import filterTodos from '../../helpers/filterTodos';
+import {filterTodos} from '../../helpers/filterTodos';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import {toggleTodo} from '../../actions/actionCreators';

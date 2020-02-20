@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {clearCompleted} from '../../actions/actionCreators';
-import calculateFilteredTodos from '../../helpers/calculateFilteredTodos';
+import {calculateFilteredTodos} from '../../helpers/filterTodos';
 import displayFilterTypes from '../../constants/displayFilterTypes';
 import "./Footer.css";
 
 const Footer = ({listofTasks, currentFilter, clearCompleted}) => {
-    let taskCount = calculateFilteredTodos(listofTasks, currentFilter);
+    let taskCount = calculateFilteredTodos(currentFilter, listofTasks);
     return(
         <div className="footer">
         <span className="countDisplay">

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import displayFilterTypes from '../constants/displayFilterTypes';
 
-const filterTodos = (filterValue, todoList) => {
+export const filterTodos = (filterValue, todoList) => {
   if (filterValue !== displayFilterTypes.ALL.key) {
     const tempList = _.filter(todoList, todo => {
       return filterValue === displayFilterTypes.COMPLETED.key ? todo.completed : !todo.completed; // think of better solution
@@ -11,4 +11,6 @@ const filterTodos = (filterValue, todoList) => {
   return todoList;
 }
 
-export default filterTodos;
+export const calculateFilteredTodos = (currentFilter, todoList) => {
+  return(filterTodos(currentFilter.key, todoList).length);
+}
