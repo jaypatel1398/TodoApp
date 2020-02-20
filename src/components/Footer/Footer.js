@@ -13,7 +13,7 @@ const Footer = ({listofTasks, currentFilter, clearCompleted}) => {
             {currentFilter.label} tasks: {taskCount}
         </span>
         <button 
-            className={ ((taskCount === 0) || (currentFilter.key === displayFilterTypes.ACTIVE)) ? "hide" : "clearCompletedButton" } 
+            className={ ((taskCount === 0) || (currentFilter.key === displayFilterTypes.ACTIVE.key)) ? "hide" : "clearCompletedButton" } 
             onClick={clearCompleted}>
             Clear Completed
         </button>

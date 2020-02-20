@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import {addTodo, setTodoAddedMessage} from '../../actions/actionCreators';
-import "./inputForm.css";
+import "./InputForm.css";
 
 let errorTimeOut;
 const Inputform = ({addTodo, setTodoAddedMessage}) => {

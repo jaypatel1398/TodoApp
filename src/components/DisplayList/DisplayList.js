@@ -3,7 +3,7 @@ import filterTodos from '../../helpers/filterTodos';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import {toggleTodo} from '../../actions/actionCreators';
-import "./displayList.css";
+import "./DisplayList.css";
 
 const DisplayList = ({ listofTasks, currentFilter, toggleTodo }) => {
   let myList = listofTasks;
