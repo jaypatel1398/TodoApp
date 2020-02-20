@@ -6,6 +6,5 @@ import { combineReducers } from 'redux';
 export default combineReducers({
     currentFilter: displayFilterReducer,
     listofTasks: listofTasksReducer,
-    todoAddedObject: todoAddedMessageReducer
+    task: todoAddedMessageReducer
 });
-//make a reducer for displayTodoMessage

@@ -1,13 +1,13 @@
 body {
-  /* text-align: center; */
-  background-color: rgba(204, 238, 255, 0.151);
-  display: flex;
-  justify-content: center;
+  background-color: rgba(128, 208, 252, 0.116);
+  /* display: flex;
+  justify-content: center; */
 }
 .title {
   font-family: sans-serif;
   font-size: 90px;
   color: rgb(15, 57, 77);
-  margin: 60px 0 0;
+  margin: 10vh 34.3vw 2vh;
+  width: 31.4vw;
   text-align: center;
 }

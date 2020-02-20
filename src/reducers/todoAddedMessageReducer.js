@@ -1,12 +1,13 @@
 import {actionTypes} from '../constants/actionTypes';
 
-const todoAddedMessageReducer = (prevState = {todoAdded: false, task: ''}, action) => {
+const todoAddedMessageReducer = (task = '', action) => {
     switch(action.type){
-        case actionTypes.SET_TODO_ADDED_MESSAGE:
-            console.log("In the reducer with "+action.payload.todoAdded+" "+action.payload.task);
-            return action.payload;
+        case actionTypes.SHOW_TODO_ADDED_MESSAGE:
+            console.log("in the todo added reducer");
+            console.log(action.payload.task);
+            return action.payload.task;
         default:
-            return prevState;
+            return task;
     }
 }
 

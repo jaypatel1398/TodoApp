@@ -1,0 +1,31 @@
+* {
+    font-size: 20px;
+    font-family: sans-serif;
+    color: rgb(15, 57, 77);
+}
+.clearCompletedButton:hover {
+    background-color: rgba(0, 174, 255, 0.5);
+    color: rgb(0, 60, 255);
+}
+.clearCompletedButton {
+    margin: 10px 20px;    
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(15, 57, 77);
+    margin: 0 34.3vw;
+    width: 31.4vw;
+    padding: 0 13px;
+}
+.countDisplay {
+    margin: 10px 20px;
+}
+.hide {
+    display: none;
+}

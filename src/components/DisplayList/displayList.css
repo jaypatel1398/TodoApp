@@ -3,46 +3,23 @@
     font-family: sans-serif;
     color: rgb(15, 57, 77);
 }
-.clearCompletedButton:hover {
-    color: rgb(20, 180, 255);
-}
-.clearCompletedButton {
-    margin: 10px 20px;    
-    background: transparent;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    text-decoration: underline;
-    text-underline-position: under;
-}
 .displayList {
     border-bottom: 1px solid rgb(15, 57, 77);
     border-left: 1px solid rgb(15, 57, 77);
     border-right: 1px solid rgb(15, 57, 77);
     padding: 13px;
-    margin: auto;
-    width: 500px;
+    margin: 0 34.3vw;
+    width: 31.4vw;
     height: 20px;
     background-color: white;
 }
 .displayList:first-child {
     border-top: 1px solid rgb(15, 57, 77);
 }
-.hide {
-    display: none;
-}
 .scrollArea {
     max-height: 500px;
     overflow: auto;
-}
-.todoItems {
-    margin: 0 15px;
-}
-.footer {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-}
-.countDisplay {
-    margin: 10px 20px;
+    /* width: 33.1vw;
+    margin: 0 34.3vw; */
+    /* border-top: 1px solid rgb(19, 24, 26); */
 }

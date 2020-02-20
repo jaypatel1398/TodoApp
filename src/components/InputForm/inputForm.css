@@ -6,11 +6,11 @@
 .frminput {
     display: block;
     padding: 13px;
-    width: 500px;
+    margin: 0 34.3vw;
+    width: 31.4vw;
     height: 20px;
     border: 1px solid rgb(15, 57, 77);
     outline: none;
-    margin: 10px;
 }
 .hide {
     display: none;

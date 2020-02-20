@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {addTodo, setTodoAddedMessage} from '../../actions/actionCreators';
 import "./inputForm.css";
 
-let timeoutId;
+let errorTimeOut;
 const Inputform = ({addTodo, setTodoAddedMessage}) => {
   const [currentInput, setCurrentInput] = useState('');
   const [error, setError] = useState(false);
@@ -16,8 +16,6 @@ const Inputform = ({addTodo, setTodoAddedMessage}) => {
     e => {
       setCurrentInput(e.target.value);
       setError(false);
-      setTodoAddedMessage(false,'');
-      timeoutId && clearTimeout(timeoutId);
     },
     []
   );
@@ -26,13 +24,13 @@ const Inputform = ({addTodo, setTodoAddedMessage}) => {
     e => {
       if (e.target.value.trim() === '') {
         setError(true);
-        setTimeout( () => { setError(false) }, 2000);
+        errorTimeOut && clearTimeout(errorTimeOut);
+        errorTimeOut = setTimeout( () => { setError(false) }, 2000);
         return false;
       }
       if (e.which === 13) {
         addTodo(e.target.value);
-        setTodoAddedMessage(true, e.target.value);
-        timeoutId = setTimeout(() => setTodoAddedMessage(false,''), 2000);
+        setTodoAddedMessage(e.target.value);
         setCurrentInput('');
       }
     },
@@ -59,7 +57,7 @@ const Inputform = ({addTodo, setTodoAddedMessage}) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addTodo: task => dispatch(addTodo(task)),
-  setTodoAddedMessage: (todoAdded, task) => dispatch(setTodoAddedMessage({todoAdded: todoAdded, task: task}))
+  setTodoAddedMessage: task => dispatch(setTodoAddedMessage(task))
 })
 
 export default connect(null, mapDispatchToProps)(Inputform);

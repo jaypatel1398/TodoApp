@@ -1,18 +1,28 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import "./TodoAddedMessage.css";
-const TodoAddedMessage = ({todoAddedObject}) => (
-    todoAddedObject.task ? 
-    <div className="container">
-        <div className="todoAddedMessage">
-            <span className="task">{todoAddedObject.task}</span> added to your todos!
+import {setTodoAddedMessage} from '../../actions/actionCreators';
+let timeOutId;
+const TodoAddedMessage = ({task, setTodoAddedMessage}) => {
+    timeOutId && clearTimeout(timeOutId);
+    timeOutId = setTimeout(() => setTodoAddedMessage(''), 2000);
+    return(
+        task.trim()==='' ?
+        <div></div>
+        :<div className="container">
+            <div className="todoAddedMessage">
+                <span className="task">{task}</span> added to your todos!
+            </div>
         </div>
-    </div>
-    : <div></div>
-);
+    );
+};
 
 const mapStateToProps = (state) => ({
-    todoAddedObject: state.todoAddedObject,
+    task: state.task,
 });
 
-export default connect(mapStateToProps)(TodoAddedMessage);
+const mapDispatchToProps = (dispatch) => ({
+    setTodoAddedMessage: task => dispatch(setTodoAddedMessage(task))
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(TodoAddedMessage);
