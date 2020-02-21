@@ -1,10 +1,10 @@
-import displayFilterReducer from './displayFilterReducer';
-import listofTasksReducer from './listofTasksReducer';
-import todoAddedMessageReducer from './todoAddedMessageReducer';
+import FilterReducer from './FilterReducer';
+import TodoListReducer from './TodoListReducer';
+import NotificationReducer from './NotificationReducer';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
-    currentFilter: displayFilterReducer,
-    listofTasks: listofTasksReducer,
-    task: todoAddedMessageReducer
+    currentFilter: FilterReducer,
+    todoList: TodoListReducer,
+    task: NotificationReducer
 });

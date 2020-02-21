@@ -1,13 +1,22 @@
 body {
   background-color: rgba(128, 208, 252, 0.116);
-  /* display: flex;
-  justify-content: center; */
+}
+* {
+  font-weight: lighter;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: rgb(15, 57, 77);
 }
 .title {
   font-family: sans-serif;
+  font-weight: lighter;
   font-size: 90px;
   color: rgb(15, 57, 77);
-  margin: 10vh 34.3vw 2vh;
-  width: 31.4vw;
   text-align: center;
+  display: block;
+}
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

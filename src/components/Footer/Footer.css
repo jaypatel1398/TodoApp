@@ -1,25 +1,23 @@
-* {
-    font-size: 20px;
-    font-family: sans-serif;
-    color: rgb(15, 57, 77);
-}
 .clearCompletedButton:hover {
-    background-color: rgba(0, 174, 255, 0.5);
-    color: rgb(0, 60, 255);
+    background-color: rgb(15, 57, 77);
+    color: rgb(255, 255, 255);
 }
 .clearCompletedButton {
-    margin: 10px 20px;    
+    text-align: center;
+    margin: 10px 10px;
     background: transparent;
     cursor: pointer;
     outline: none;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
+    color: rgb(15, 57, 77);
+    background-color: rgba(15, 57, 77, 0.8);
+    color: rgb(255, 255, 255);
 }
 .footer {
     display: flex;
     justify-content: space-between;
     border: 1px solid rgb(15, 57, 77);
-    margin: 0 34.3vw;
     width: 31.4vw;
     padding: 0 13px;
 }

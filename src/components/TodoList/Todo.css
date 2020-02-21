@@ -1,14 +1,8 @@
-* {
-    font-size: 20px;
-    font-family: sans-serif;
-    color: rgb(15, 57, 77);
-}
 .displayList {
     border-bottom: 1px solid rgb(15, 57, 77);
     border-left: 1px solid rgb(15, 57, 77);
     border-right: 1px solid rgb(15, 57, 77);
     padding: 13px;
-    margin: 0 34.3vw;
     width: 31.4vw;
     height: 20px;
     background-color: white;
@@ -19,7 +13,15 @@
 .scrollArea {
     max-height: 500px;
     overflow: auto;
-    /* width: 33.1vw;
-    margin: 0 34.3vw; */
-    /* border-top: 1px solid rgb(19, 24, 26); */
+    width: 100%;
+    /* margin-left: calc(100vw - 100%); */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.todoItems {
+    margin: 0 20px;
+}
+input:checked {
+    background-color: skyblue;
 }

@@ -1,6 +1,6 @@
 import {actionTypes} from '../constants/actionTypes';
 
-const todoAddedMessageReducer = (task = '', action) => {
+const NotificationReducer = (task = '', action) => {
     switch(action.type){
         case actionTypes.SHOW_TODO_ADDED_MESSAGE:
             console.log("in the todo added reducer");
@@ -11,4 +11,4 @@ const todoAddedMessageReducer = (task = '', action) => {
     }
 }
 
-export default todoAddedMessageReducer;
+export default NotificationReducer;

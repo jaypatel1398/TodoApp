@@ -1,24 +1,24 @@
 import React from "react";
-import DisplayFilters from './components/DisplayFilters/DisplayFilters';
-import DisplayList from './components/DisplayList/DisplayList';
-import InputForm from './components/InputForm/InputForm';
-import TodoAddedMessage from './components/TodoAddedMessage/TodoAddedMessage';
-import Footer from './components/Footer/Footer';
 import "./App.css";
+import FilterContainer from "./components/Filter/FilterContainer";
+import FooterContainer from "./components/Footer/FooterContainer";
+import InputFormContainer from "./components/InputForm/InputFormContainer";
+import NotificationContainer from "./components/Notification/NotificationContainer";
+import TodoListContainer from "./components/TodoList/TodoListContainer";
 
 const App = () => {
   return (
     <div>
-      <TodoAddedMessage/>
+      <NotificationContainer/>
+      <div className="App">
         <h1 className="title">Todos</h1>
-        <InputForm/>
-        <DisplayFilters/>
-        <DisplayList/>
-        <Footer/>
+        <InputFormContainer/>
+        <FilterContainer/>
+        <TodoListContainer/>
+        <FooterContainer/>
+      </div>
     </div>
   );
 }
 
 export default App;
-
-//make a new component for displaying a message

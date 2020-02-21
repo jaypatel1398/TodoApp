@@ -1,33 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {clearCompleted} from '../../actions/actionCreators';
-import {calculateFilteredTodos} from '../../helpers/filterTodos';
-import displayFilterTypes from '../../constants/displayFilterTypes';
 import "./Footer.css";
 
-const Footer = ({listofTasks, currentFilter, clearCompleted}) => {
-    let taskCount = calculateFilteredTodos(currentFilter, listofTasks);
-    return(
-        <div className="footer">
+const Footer = (props) => (
+    <div className="footer">
         <span className="countDisplay">
-            {currentFilter.label} tasks: {taskCount}
+            {props.currentFilter.label} tasks: {props.taskCount}
         </span>
         <button 
-            className={ ((taskCount === 0) || (currentFilter.key === displayFilterTypes.ACTIVE.key)) ? "hide" : "clearCompletedButton" } 
-            onClick={clearCompleted}>
+            className={ props.showClearCompletedButton ? "hide" : "clearCompletedButton" } 
+            onClick={props.onClick}>
             Clear Completed
         </button>
-        </div>
-    );
-}
+    </div>
+);
 
-const mapStateToProps = (state) => ({
-    listofTasks: state.listofTasks,
-    currentFilter: state.currentFilter
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    clearCompleted: () => dispatch(clearCompleted())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default Footer;

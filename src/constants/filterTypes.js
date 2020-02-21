@@ -1,4 +1,4 @@
-const displayFilterTypes = {
+const filterTypes = {
     ALL: {
         key: 'ALL',
         label: 'All'
@@ -12,4 +12,4 @@ const displayFilterTypes = {
         label: 'Completed'
     }
 };
-export default displayFilterTypes;
+export default filterTypes;
