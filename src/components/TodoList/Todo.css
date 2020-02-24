@@ -7,7 +7,8 @@
     width: 31.4vw;
     height: 20px;
     background-color: var(--colorBackground);
-    /* background-color: transparent; */
+    display: flex;
+    justify-content: space-between;
     color: var(--colorBright);
 }
 .displayList:first-child {
@@ -26,4 +27,14 @@
 }
 .todoItems {
     margin: 0 20px;
+}
+.removeTodoButton {
+    background-color: transparent;
+    color: var(--colorDull);
+    border: none;
+    outline: none;
+}
+.removeTodoButton:hover {
+    color: var(--colorBright);
+    cursor: pointer;
 }

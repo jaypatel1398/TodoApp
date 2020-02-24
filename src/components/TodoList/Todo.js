@@ -3,17 +3,18 @@ import _ from 'lodash';
 import "./Todo.css";
 
 const TodoList = (props) => (
-  <div className="displayList" 
-    key={props.todo.id}
-    onClick={_.partial(props.toggleTodo, props.todo.id)}>
-    <input
-      type="checkbox"
-      id="myCheck"
-      className="todoItems"
-      checked={props.todo.completed}
-      readOnly
-    />
-    {props.todo.task}
+  <div className="displayList">
+    <span>
+      <input
+        type="checkbox"
+        id="myCheck"
+        className="todoItems"
+        checked={props.todo.completed}
+        onClick={_.partial(props.toggleTodo, props.todo.id)}
+      />
+      {props.todo.task}
+    </span>
+    <button className="removeTodoButton" onClick={_.partial(props.removeTodo, props.todo.id)}>X</button>
   </div>
 );
 

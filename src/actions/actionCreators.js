@@ -24,6 +24,13 @@ export const clearCompleted = () => ({
   type: actionTypes.CLEAR_COMPLETED
 });
 
+export const removeTodo = (id) => ({
+  type: actionTypes.REMOVE_TODO,
+  payload: {
+    id
+  }
+});
+
 export const setNotification = task => ({
   type: actionTypes.SHOW_TODO_ADDED_MESSAGE,
   payload: {

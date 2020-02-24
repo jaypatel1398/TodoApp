@@ -84,6 +84,37 @@ const todoListReducer = (state = initialState, action) => {
 					$splice: [[0, state.completedIds.length]]
 				}
 			});
+		case (actionTypes.REMOVE_TODO):
+			const todoIsCompleted = state.byId[action.payload.id].completed;
+			const indexAllId = _.indexOf(state.allIds, action.payload.id);
+			if(todoIsCompleted){
+				const indexCompleted = _.indexOf(state.completedIds, action.payload.id);
+				return update(state, {
+					byId: {
+						$unset: action.payload.id
+					},
+					allIds: {
+						$splice: [[indexAllId, 1]]
+					},
+					completedIds: {
+						$splice: [[indexCompleted, 1]]
+					}
+				});
+			}
+			else{
+				const indexActive = _.indexOf(state.activeIds, action.payload.id);
+				return update(state, {
+					byId: {
+						$unset: [action.payload.id]
+					},
+					allIds: {
+						$splice: [[indexAllId, 1]]
+					},
+					activeIds: {
+						$splice: [[indexActive, 1]]
+					}
+				});
+			}
 		default:
 			return state;
 	}
