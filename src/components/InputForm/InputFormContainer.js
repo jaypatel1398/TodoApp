@@ -17,13 +17,13 @@ const InputFormContainer = ({ addTodo, setNotification }) => {
     };
 
     const onKeyPress = e => {
-        if (e.target.value.trim() === '') {
-            setError(true);
-            errorTimeOut && clearTimeout(errorTimeOut);
-            errorTimeOut = setTimeout(() => { setError(false) }, 2000);
-            return false;
-        }
         if (e.which === 13) {
+            if (e.target.value.trim() === '') {
+                setError(true);
+                errorTimeOut && clearTimeout(errorTimeOut);
+                errorTimeOut = setTimeout(() => { setError(false) }, 2000);
+                return false;
+            }
             addTodo(e.target.value);
             setNotification(e.target.value);
             setCurrentInput('');
@@ -32,7 +32,6 @@ const InputFormContainer = ({ addTodo, setNotification }) => {
 
     return (
         <InputForm
-            addTodo={addTodo}
             setNotification={setNotification}
             error={error}
             onSubmit={onSubmit}

@@ -9,6 +9,7 @@ const FilterContainer = ({currentFilter, setCurrentFilter}) => (
     <div>
         {_.map(filterTypes, (filter)=>(
                 <Filter 
+                    key={filter.key}
                     filter={filter}
                     setCurrentFilter={setCurrentFilter} 
                     selected={currentFilter.key===filter.key}
