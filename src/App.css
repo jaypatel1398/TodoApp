@@ -1,19 +1,29 @@
 body {
-  background-color: rgba(128, 208, 252, 0.116);
+  --colorBackground: #0b0c10;
+  --colorBackground2: #0b0c10ef;
+  --colorBright: #66fcf1;
+  --colorBright2: #66fcf29f;
+  --colorBright3: #66fcf2c0;
+  --colorGray: #1f2833;
+  --colorDull: #255f5c;
+  --colorDull2: #255f5c38;
+  --colorDull3: #255f5c83;
+  --colorSilver: #c5c6c7;
+  background-color: var(--colorBackground2);
+  /* background-image: url('bg5.jpg'); */
 }
 * {
   font-weight: lighter;
   font-size: 20px;
   font-family: sans-serif;
-  color: rgb(15, 57, 77);
 }
 .title {
   font-family: sans-serif;
-  font-weight: lighter;
   font-size: 90px;
-  color: rgb(15, 57, 77);
+  color: var(--colorBright);
   text-align: center;
   display: block;
+  margin: 70px 0 20px 0;
 }
 .App {
   display: flex;

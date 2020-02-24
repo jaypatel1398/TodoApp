@@ -1,6 +1,6 @@
 .filterButton:hover {
-    background-color: rgba(15, 57, 77, 0.6);
-    color: rgb(255, 255, 255);
+    background-color: var(--colorDull3);
+    color: var(--colorBright3);
 }
 .filterButton {
     text-align: center;
@@ -10,15 +10,15 @@
     outline: none;
     border: none;
     border-radius: 5px;
-    color: rgb(15, 57, 77);
-    background-color: rgba(15, 57, 77, 0.4);
-    color: rgb(255, 255, 255);
+    background-color: var(--colorDull2);
+    color: var(--colorBright2);
+    border: 1px solid var(--colorBright3);
 }
 .selected {
-    background-color: rgb(15, 57, 77);
-    color: rgb(255, 255, 255);
+    background-color: var(--colorBright);
+    color: var(--colorBackground);
 }
 .selected:hover {
-    background-color: rgb(15, 57, 77);
-    color: rgb(255, 255, 255);
+    background-color: var(--colorBright);
+    color: var(--colorBackground);
 }

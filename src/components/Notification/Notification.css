@@ -1,9 +1,9 @@
 .Notification {
-    background-color: rgba(0, 174, 255, 0.5);
+    background-color: var(--colorBright);
     padding: 5px;
-    border: 1px solid rgb(15, 57, 77);
+    /* border: 1px solid var(--colorBright2); */
     border-radius: 2px;
-    color: rgb(15, 57, 77);
+    color: var(--colorBackground);
     position: absolute;
     height: 25px;
     left: 0;
@@ -18,5 +18,5 @@
 .task {
     font-weight: bolder;
     font-style: italic;
-    color: blue;
+    color: var(--colorBackground);
 }

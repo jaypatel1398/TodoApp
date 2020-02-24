@@ -1,6 +1,6 @@
 .clearCompletedButton:hover {
-    background-color: rgb(15, 57, 77);
-    color: rgb(255, 255, 255);
+    background-color: var(--colorBright);
+    color: var(--colorBackground);
 }
 .clearCompletedButton {
     text-align: center;
@@ -10,19 +10,22 @@
     outline: none;
     border: none;
     border-radius: 5px;
-    color: rgb(15, 57, 77);
-    background-color: rgba(15, 57, 77, 0.8);
-    color: rgb(255, 255, 255);
+    background-color: var(--colorDull3);
+    color: var(--colorBright3);
+    border: 1px solid var(--colorBright3);
 }
 .footer {
     display: flex;
     justify-content: space-between;
-    border: 1px solid rgb(15, 57, 77);
+    border: 1px solid var(--colorBright2);
+    border-radius: 5px;
+    background-color: transparent;
     width: 31.4vw;
     padding: 0 13px;
 }
 .countDisplay {
     margin: 10px 20px;
+    color: var(--colorBright);
 }
 .hide {
     display: none;
