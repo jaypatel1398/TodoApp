@@ -6,11 +6,12 @@ import Footer from './Footer';
 
 const FooterContainer = ({todoList, currentFilter, clearCompleted}) => {
     let taskCount = todoList.allIds.length;
+    const completedTodoCount = todoList.completedIds.length;
     if(currentFilter.key===filterTypes.COMPLETED.key)
         taskCount = todoList.completedIds.length;
     if(currentFilter.key===filterTypes.ACTIVE.key)
         taskCount = todoList.activeIds.length;
-    let showClearCompletedButton = (taskCount === 0) || (currentFilter.key === filterTypes.ACTIVE.key);
+    const showClearCompletedButton = (taskCount !== 0) && (currentFilter.key !== filterTypes.ACTIVE.key) && (completedTodoCount !== 0);
     return <Footer 
         taskCount={taskCount} 
         onClick={clearCompleted} 

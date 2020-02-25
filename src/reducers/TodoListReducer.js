@@ -91,7 +91,7 @@ const todoListReducer = (state = initialState, action) => {
 				const indexCompleted = _.indexOf(state.completedIds, action.payload.id);
 				return update(state, {
 					byId: {
-						$unset: action.payload.id
+						$unset: [action.payload.id]
 					},
 					allIds: {
 						$splice: [[indexAllId, 1]]

@@ -9,9 +9,6 @@
     background-color: var(--colorBackground);
     color: var(--colorBright);
 }
-.hide {
-    display: none;
-}
 .showError {
     color: red;
     text-align: center;

@@ -14,7 +14,11 @@ const Inputform = (props) => (
         onKeyPress={props.onKeyPress}
       />
     </form>
-    <div className={props.error ? "showError" : "hide"}>Error: Please enter a valid task</div>
+    {
+      props.error ?
+      <div className="showError">Error: Please enter a valid task</div>
+      : null
+    }
   </div>
 );
 export default Inputform;

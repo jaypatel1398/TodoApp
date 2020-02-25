@@ -6,11 +6,15 @@ const Footer = (props) => (
         <span className="countDisplay">
             {props.currentFilter.label} tasks: {props.taskCount}
         </span>
-        <button 
-            className={ props.showClearCompletedButton ? "hide" : "clearCompletedButton" } 
-            onClick={props.onClick}>
-            Clear Completed
-        </button>
+        {
+            props.showClearCompletedButton ? 
+            <button 
+                className="clearCompletedButton"
+                onClick={props.onClick}>
+                Clear Completed
+            </button>
+            : null
+        }
     </div>
 );
 
