@@ -1,17 +1,17 @@
 import _ from 'lodash';
-import {actionTypes} from '../constants/actionTypes';
+import {ACTION_TYPES} from '../constants/actionTypes';
 import update from 'immutability-helper';
 
 const initialState = {
 	byId: {},
-	allIds: [],
-	activeIds: [],
-	completedIds: []
+	ALL: [],
+	ACTIVE: [],
+	COMPLETED: []
 }
 const todoListReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case (actionTypes.ADD_TODO):
-			const currentId = state.allIds.length===0 ? 1 : state.allIds[state.allIds.length-1] + 1;
+		case (ACTION_TYPES.ADD_TODO):
+			const currentId = state.ALL.length===0 ? 1 : state.ALL[state.ALL.length-1] + 1;
 			return update(state, {
 				byId: {
 					$merge: {
@@ -22,97 +22,62 @@ const todoListReducer = (state = initialState, action) => {
 						}
 					}
 				},
-				allIds: {
-					$push: [currentId]
-				},
-				activeIds: {
-					$push: [currentId]
-				}
+				ALL: { $push: [currentId] },
+				ACTIVE: { $push: [currentId] }
 			})
-		case (actionTypes.TOGGLE_TODO):
-			const todoIsActive = !state.byId[action.payload.id].completed;
-			if(todoIsActive){
-				const activeIndex = _.indexOf(state.activeIds, action.payload.id);
-				return update(state, {
-					byId: {
-						[action.payload.id]:{
-							completed:{
-								$set: true
-							}
-						}
-					},
-					completedIds: {
-						$push: [action.payload.id]
-					},
-					activeIds: {
-						$splice: [[activeIndex,1]]
-					}
-				});
-			}
-			else{
-				const completedIndex = _.indexOf(state.completedIds, action.payload.id);
-				return update(state, {
-					byId: {
-						[action.payload.id]:{
-							completed:{
-								$set: false
-							}
-						}
-					},
-					activeIds: {
-						$push: [action.payload.id]
-					},
-					completedIds: {
-						$splice: [[completedIndex, 1]]
-					}
-				});
-			}
-		case (actionTypes.CLEAR_COMPLETED):
-			var tempAllIds = _.filter(state.allIds, (id) => {
-				if(state.byId[id].completed)
-					return false;
-				return true;
-			})
-			return update(state, {
+		case (ACTION_TYPES.TOGGLE_TODO):
+			const isTodoActive = !state.byId[action.payload.id].completed;
+			const byIdUpdatedState = update(state, {
 				byId: {
-					$unset: state.completedIds
-				},
-				allIds: {
-					$set: tempAllIds
-				},
-				completedIds: {
-					$splice: [[0, state.completedIds.length]]
-				}
-			});
-		case (actionTypes.REMOVE_TODO):
-			const todoIsCompleted = state.byId[action.payload.id].completed;
-			const indexAllId = _.indexOf(state.allIds, action.payload.id);
-			if(todoIsCompleted){
-				const indexCompleted = _.indexOf(state.completedIds, action.payload.id);
-				return update(state, {
-					byId: {
-						$unset: [action.payload.id]
-					},
-					allIds: {
-						$splice: [[indexAllId, 1]]
-					},
-					completedIds: {
-						$splice: [[indexCompleted, 1]]
+					[action.payload.id]:{
+						completed:{
+							$set: !state.byId[action.payload.id].completed
+						}
 					}
+				},
+			})
+			if(isTodoActive){
+				const activeIndex = _.indexOf(state.ACTIVE, action.payload.id);
+				return update(byIdUpdatedState, {
+					COMPLETED: { $push: [action.payload.id] },
+					ACTIVE: { $splice: [[activeIndex,1]] }
 				});
 			}
 			else{
-				const indexActive = _.indexOf(state.activeIds, action.payload.id);
-				return update(state, {
-					byId: {
-						$unset: [action.payload.id]
-					},
-					allIds: {
-						$splice: [[indexAllId, 1]]
-					},
-					activeIds: {
-						$splice: [[indexActive, 1]]
-					}
+				const completedIndex = _.indexOf(state.COMPLETED, action.payload.id);
+				return update(byIdUpdatedState, {
+					ACTIVE: { $push: [action.payload.id] },
+					COMPLETED: { $splice: [[completedIndex, 1]] }
+				});
+			}
+
+		case (ACTION_TYPES.CLEAR_COMPLETED):
+			const filteredIds = _.filter(state.ALL, (id) => !state.byId[id].completed);
+
+			return update(state, {
+				byId: { $unset: state.COMPLETED },
+				ALL: { $set: filteredIds },
+				COMPLETED: { $splice: [[0, state.COMPLETED.length]] }
+			});
+
+		case (ACTION_TYPES.REMOVE_TODO):
+			const isTodoCompleted = state.byId[action.payload.id].completed;
+			const indexAllId = _.indexOf(state.ALL, action.payload.id);
+			const updatedState = update(state, {
+				byId: { $unset: [action.payload.id] }
+			})
+			if(isTodoCompleted){
+				const indexCompleted = _.indexOf(state.COMPLETED, action.payload.id);
+				return update(updatedState, {
+					ALL: { $splice: [[indexAllId, 1]] },
+					COMPLETED: { $splice: [[indexCompleted, 1]] }
+				});
+			}
+			else{
+				const indexActive = _.indexOf(state.ACTIVE, action.payload.id);
+				return update(updatedState, {
+					ALL: { $splice: [[indexAllId, 1]] },
+					ACTIVE: { $splice: [[indexActive, 1]] }
 				});
 			}
 		default:

@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import Filter from './Filter';
-import { setCurrentFilter } from '../../actions/actionCreators';
-import filterTypes from '../../constants/filterTypes';
+import { getSetFilterAction } from '../../actions/actionCreators';
+//capital
+import FILTER_TYPES from '../../constants/filterTypes';
 import _ from 'lodash';
 import React from 'react';
 
-const FilterContainer = ({currentFilter, setCurrentFilter}) => (
+const FilterContainer = ({currentFilter, setFilter}) => (
     <div>
-        {_.map(filterTypes, (filter)=>(
+        {_.map(FILTER_TYPES, (filter)=>(
                 <Filter 
                     key={filter.key}
                     filter={filter}
-                    setCurrentFilter={setCurrentFilter} 
+                    setFilter={setFilter} 
                     selected={currentFilter.key===filter.key}
                 />
             )
@@ -24,8 +25,4 @@ const mapStateToProps = (state) => ({
     currentFilter: state.currentFilter
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    setCurrentFilter: (filterType) => dispatch(setCurrentFilter(filterType))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FilterContainer);
+export default connect(mapStateToProps, {setFilter: getSetFilterAction})(FilterContainer);

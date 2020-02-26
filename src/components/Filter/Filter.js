@@ -1,12 +1,14 @@
 import "./Filter.css";
 import React from 'react';
 import _ from 'lodash';
+import classNames from 'classnames';
 
 const Filter = (props) => {
   return (
     <button
-      className={`filterButton ${props.selected ? 'selected' : ''}`}
-      onClick={_.partial(props.setCurrentFilter,props.filter)}>
+      className={classNames('filterButton', { 'selected': props.selected })}
+      onClick={_.partial(props.setFilter,props.filter)}
+    >
       {props.filter.label}
     </button>
   );

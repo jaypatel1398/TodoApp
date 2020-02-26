@@ -14,6 +14,12 @@
     color: var(--colorBright3);
     border: 1px solid var(--colorBright3);
 }
+.clearCompletedButton:disabled {
+    background-color: transparent;
+    border: 1px solid var(--colorDull3);
+    color: var(--colorDull3);
+    cursor: auto;
+}
 .footer {
     display: flex;
     justify-content: space-between;

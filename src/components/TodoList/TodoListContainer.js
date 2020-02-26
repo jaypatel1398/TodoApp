@@ -1,17 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleTodo, removeTodo} from '../../actions/actionCreators';
+import { getToggleTodoAction, getRemoveTodoAction} from '../../actions/actionCreators';
 import Todo from './Todo';
 import _ from 'lodash';
 import "./Todo.css";
-import filterTypes from '../../constants/filterTypes';
 
 const TodoListContainer = ({ todoList, currentFilter, toggleTodo, removeTodo }) => {
-    let filteredTodos = [...todoList.allIds];
-    if(currentFilter.key===filterTypes.COMPLETED.key)
-        filteredTodos = [...todoList.completedIds];
-    if(currentFilter.key===filterTypes.ACTIVE.key)
-        filteredTodos = [...todoList.activeIds];
+    let filteredTodos = todoList[currentFilter.key];
+
     return(
         <div className="scrollArea">
             {_.map(filteredTodos, (id) => {
@@ -27,9 +23,7 @@ const mapStateToProps = (state) => ({
     currentFilter: state.currentFilter
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    toggleTodo: id => dispatch(toggleTodo(id)),
-    removeTodo: id => dispatch(removeTodo(id))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoListContainer);
+export default connect(mapStateToProps, {
+    toggleTodo: getToggleTodoAction,
+    removeTodo: getRemoveTodoAction
+})(TodoListContainer);

@@ -1,8 +1,8 @@
-import {actionTypes} from '../constants/actionTypes';
+import {ACTION_TYPES} from '../constants/actionTypes';
 
 const NotificationReducer = (task = '', action) => {
     switch(action.type){
-        case actionTypes.SHOW_TODO_ADDED_MESSAGE:
+        case ACTION_TYPES.SHOW_NOTIFICATION:
             return action.payload.task;
         default:
             return task;

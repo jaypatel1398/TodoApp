@@ -1,32 +1,34 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, setNotification } from '../../actions/actionCreators';
+import { getAddTodoAction, getSetNotificationAction } from '../../actions/actionCreators';
 import InputForm from './InputForm';
 
 let errorTimeOut;
 
 const InputFormContainer = ({ addTodo, setNotification }) => {
-    const [currentInput, setCurrentInput] = useState('');
+    const [inputValue, setInputValue] = useState('');
     const [error, setError] = useState(false);
 
     const onSubmit = e => e.preventDefault();
 
+    //target vs currentTarget, why synthetic event vs native event
     const onInputChange = e => {
-        setCurrentInput(e.target.value);
+        setInputValue(e.target.value);
         setError(false);
     };
 
     const onKeyPress = e => {
-        if (e.which === 13) {
-            if (e.target.value.trim() === '') {
+        if (e.key === 'Enter') {
+            if (!e.target.value.trim()) {
                 setError(true);
+                //todo: snackBar
                 errorTimeOut && clearTimeout(errorTimeOut);
                 errorTimeOut = setTimeout(() => { setError(false) }, 2000);
                 return false;
             }
             addTodo(e.target.value);
             setNotification(e.target.value);
-            setCurrentInput('');
+            setInputValue('');
         }
     };
 
@@ -35,16 +37,14 @@ const InputFormContainer = ({ addTodo, setNotification }) => {
             setNotification={setNotification}
             error={error}
             onSubmit={onSubmit}
-            currentInput={currentInput}
+            inputValue={inputValue}
             onChange={onInputChange}
             onKeyPress={onKeyPress}
         />
     );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    addTodo: task => dispatch(addTodo(task)),
-    setNotification: task => dispatch(setNotification(task))
-})
-
-export default connect(null, mapDispatchToProps)(InputFormContainer);
+export default connect(null, {
+    addTodo: getAddTodoAction, 
+    setNotification: getSetNotificationAction
+})(InputFormContainer);

@@ -1,4 +1,4 @@
-const filterTypes = {
+const FILTER_TYPES = {
     ALL: {
         key: 'ALL',
         label: 'All'
@@ -12,4 +12,4 @@ const filterTypes = {
         label: 'Completed'
     }
 };
-export default filterTypes;
+export default FILTER_TYPES;

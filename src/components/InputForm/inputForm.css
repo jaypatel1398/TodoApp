@@ -16,3 +16,6 @@
 .redBorder {
     border: 1px solid rgba(255,0,0,0.9);
 }
+.errorDiv {
+    height: 20px;
+}

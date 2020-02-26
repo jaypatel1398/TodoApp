@@ -1,38 +1,38 @@
-import {actionTypes} from '../constants/actionTypes';
-export const addTodo = task => ({
-  type: actionTypes.ADD_TODO,
+import {ACTION_TYPES} from '../constants/actionTypes';
+export const getAddTodoAction = task => ({
+  type: ACTION_TYPES.ADD_TODO,
   payload: {
     task,
   }
 });
 
-export const toggleTodo = id => ({
-  type: actionTypes.TOGGLE_TODO,
+export const getToggleTodoAction = id => ({
+  type: ACTION_TYPES.TOGGLE_TODO,
   payload: {
     id,
   }
 });
 
-export const setCurrentFilter = filter => ({
-  type: actionTypes.SET_DISPLAY_FILTER,
+export const getSetFilterAction = filter => ({
+  type: ACTION_TYPES.SET_FILTER,
   payload: {
     currentFilter: filter
   }
 });
 
-export const clearCompleted = () => ({
-  type: actionTypes.CLEAR_COMPLETED
+export const getClearCompletedAction = () => ({
+  type: ACTION_TYPES.CLEAR_COMPLETED
 });
 
-export const removeTodo = (id) => ({
-  type: actionTypes.REMOVE_TODO,
+export const getRemoveTodoAction = (id) => ({
+  type: ACTION_TYPES.REMOVE_TODO,
   payload: {
     id
   }
 });
 
-export const setNotification = task => ({
-  type: actionTypes.SHOW_TODO_ADDED_MESSAGE,
+export const getSetNotificationAction = task => ({
+  type: ACTION_TYPES.SHOW_NOTIFICATION,
   payload: {
     task,
   }

@@ -1,7 +1,6 @@
 .Notification {
     background-color: var(--colorBright);
     padding: 5px;
-    /* border: 1px solid var(--colorBright2); */
     border-radius: 2px;
     color: var(--colorBackground);
     position: absolute;
@@ -13,7 +12,8 @@
     width: fit-content;
 }
 .task {
-    font-weight: bolder;
+    font-weight: 900;
+    font-size: 22px;
     font-style: italic;
     color: var(--colorBackground);
 }

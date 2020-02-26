@@ -1,22 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearCompleted} from '../../actions/actionCreators';
-import filterTypes from '../../constants/filterTypes';
+import {getClearCompletedAction} from '../../actions/actionCreators';
+import FILTER_TYPES from '../../constants/filterTypes';
 import Footer from './Footer';
 
 const FooterContainer = ({todoList, currentFilter, clearCompleted}) => {
-    let taskCount = todoList.allIds.length;
-    const completedTodoCount = todoList.completedIds.length;
-    if(currentFilter.key===filterTypes.COMPLETED.key)
-        taskCount = todoList.completedIds.length;
-    if(currentFilter.key===filterTypes.ACTIVE.key)
-        taskCount = todoList.activeIds.length;
-    const showClearCompletedButton = (taskCount !== 0) && (currentFilter.key !== filterTypes.ACTIVE.key) && (completedTodoCount !== 0);
+    let taskCount = todoList[currentFilter.key].length;
+
+    const disableClearCompleted = (taskCount === 0) || (currentFilter.key === FILTER_TYPES.ACTIVE.key) || (todoList.COMPLETED.length === 0);
+    
     return <Footer 
         taskCount={taskCount} 
         onClick={clearCompleted} 
         currentFilter={currentFilter}
-        showClearCompletedButton={showClearCompletedButton}/>
+        disableClearCompleted={disableClearCompleted}/>
 };
 
 const mapStateToProps = (state) => ({
@@ -24,8 +21,4 @@ const mapStateToProps = (state) => ({
     currentFilter: state.currentFilter
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    clearCompleted: () => dispatch(clearCompleted())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FooterContainer);
+export default connect(mapStateToProps, {clearCompleted: getClearCompletedAction})(FooterContainer);
